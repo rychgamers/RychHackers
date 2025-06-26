@@ -1,2 +1,377 @@
-# RychHackers
-Unlimited Gems And Coins in DLS25
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RychHackers - DLS Free Gems Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background-color: #0a0a0a;
+            color: #00ff41;
+            overflow-x: hidden;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41;
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41 inset;
+        }
+        
+        .terminal-line {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        .hacker-btn {
+            transition: all 0.3s;
+        }
+        
+        .hacker-btn:hover {
+            box-shadow: 0 0 15px #00ff41;
+            transform: translateY(-2px);
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Background Effect -->
+    <canvas id="matrix" class="matrix-bg"></canvas>
+    
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="py-6 px-4 sm:px-6 lg:px-8 border-b border-green-500/20">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-user-secret text-3xl text-green-500"></i>
+                    <h1 class="text-2xl sm:text-3xl font-bold glow-text">RychHackers</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <span class="text-green-400"><i class="fas fa-shield-alt mr-1"></i> Secure</span>
+                    <span class="text-green-400"><i class="fas fa-bolt mr-1"></i> Fast</span>
+                    <span class="text-green-400"><i class="fas fa-check-circle mr-1"></i> Working</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Welcome Message -->
+                <div class="bg-black/50 p-6 rounded-lg border border-green-500/30 mb-8 glow-box">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-terminal text-green-500 mr-3 text-xl"></i>
+                        <h2 class="text-xl sm:text-2xl font-bold glow-text">Welcome to RychHackers DLS Generator</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <p class="terminal-line">> Initializing system...</p>
+                        <p class="terminal-line">> Connecting to DLS servers...</p>
+                        <p class="terminal-line">> Bypassing security protocols...</p>
+                        <p class="text-green-300">Designed And Created By Jeff Rodrych, A Rank #1 Mobile Game Hacker</p>
+                    </div>
+                </div>
+                
+                <!-- Generator Section -->
+                <div class="bg-black/50 p-6 rounded-lg border border-green-500/30 mb-8 glow-box">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-gem text-green-500 mr-3 text-xl"></i>
+                        <h2 class="text-xl sm:text-2xl font-bold glow-text">Dream League Soccer Resource Generator</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="mb-4">
+                                <label class="block text-green-300 mb-2">Select Resource</label>
+                                <div class="flex space-x-4">
+                                    <button class="hacker-btn flex-1 py-2 px-4 bg-green-900/50 border border-green-500 rounded flex items-center justify-center">
+                                        <i class="fas fa-gem mr-2"></i> Gems
+                                    </button>
+                                    <button class="hacker-btn flex-1 py-2 px-4 bg-green-900/50 border border-green-500 rounded flex items-center justify-center">
+                                        <i class="fas fa-coins mr-2"></i> Diamonds
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-green-300 mb-2">Enter Amount</label>
+                                <div class="relative">
+                                    <input type="number" class="w-full bg-black/70 border border-green-500 rounded py-2 px-4 text-green-300 focus:outline-none focus:ring-1 focus:ring-green-500" placeholder="5000" min="100" max="99999">
+                                    <div class="absolute right-3 top-2 text-green-400">
+                                        <i class="fas fa-hashtag"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-green-300 mb-2">Your DLS Link Code (6 characters)</label>
+                                <div class="relative">
+                                    <input type="text" id="userCode" maxlength="6" class="w-full bg-black/70 border border-green-500 rounded py-2 px-4 text-green-300 focus:outline-none focus:ring-1 focus:ring-green-500" placeholder="ABC123" pattern="[A-Za-z0-9]{6}">
+                                    <div class="absolute right-3 top-2 text-green-400">
+                                        <i class="fas fa-key"></i>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-green-400 mt-1 flex items-center">
+                                    <i class="fas fa-info-circle mr-1"></i> Where to find your code:
+                                    <a href="images/dls-link-code-instructions.jpg" target="_blank" class="text-green-300 hover:text-green-200 ml-1 underline">View Instructions</a>
+                                </p>
+                            </div>
+                            
+                            <div class="mb-4 flex items-center">
+                                <input type="checkbox" id="humanVerify" class="mr-2 h-5 w-5 text-green-500 bg-black border-green-500 rounded focus:ring-green-500">
+                                <label for="humanVerify" class="text-green-300">I'm not a robot</label>
+                            </div>
+                            
+                            <button id="generateBtn" class="w-full hacker-btn py-3 px-6 bg-green-800 hover:bg-green-700 text-white font-bold rounded-lg flex items-center justify-center">
+                                <i class="fas fa-bolt mr-2"></i> GENERATE NOW
+                            </button>
+                        </div>
+                        
+                        <div class="bg-black/70 p-4 rounded border border-green-500/30 flex flex-col">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-lock text-green-500 mr-2"></i>
+                                <h3 class="text-lg font-bold glow-text">Security Protocol</h3>
+                            </div>
+                            <div class="flex-grow space-y-3 text-sm text-green-300">
+                                <p><i class="fas fa-check-circle text-green-500 mr-1"></i> Encrypted connection to DLS servers</p>
+                                <p><i class="fas fa-check-circle text-green-500 mr-1"></i> Proxy IP masking enabled</p>
+                                <p><i class="fas fa-check-circle text-green-500 mr-1"></i> No password required</p>
+                                <p><i class="fas fa-check-circle text-green-500 mr-1"></i> Undetectable by game anti-cheat</p>
+                                <p><i class="fas fa-check-circle text-green-500 mr-1"></i> 100% safe for your account</p>
+                                <p><i class="fas fa-check-circle text-green-500 mr-1"></i> Code verification required for security</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-green-500/20">
+                                <div class="flex items-center text-yellow-400 text-sm">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                                    <span>Limited to 3 uses per day per account</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Status/Result Section -->
+                <div id="resultSection" class="hidden bg-black/50 p-6 rounded-lg border border-green-500/30 mb-8 glow-box">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-spinner fa-spin text-green-500 mr-3 text-xl"></i>
+                        <h2 class="text-xl sm:text-2xl font-bold glow-text">Processing Request</h2>
+                    </div>
+                    <div id="statusMessages" class="space-y-3">
+                        <!-- Messages will be added here by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- YouTube Verification Section -->
+                <div id="youtubeVerifySection" class="hidden bg-black/50 p-6 rounded-lg border border-green-500/30 mb-8 glow-box">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-youtube text-red-500 mr-3 text-xl"></i>
+                        <h2 class="text-xl sm:text-2xl font-bold glow-text">Verification Required</h2>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-green-300 mb-4">To complete the process, please subscribe to our YouTube channel:</p>
+                        <a href="https://youtube.com/@rychgamers-hd?si=F5kM4QistJ3t8ZA8" target="_blank" class="hacker-btn inline-flex items-center py-3 px-6 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg mb-4">
+                            <i class="fab fa-youtube mr-2"></i> Subscribe Now
+                        </a>
+                        <p class="text-sm text-green-400 mt-4">After subscribing, click the button below to verify:</p>
+                        <button id="verifySubscribeBtn" class="hacker-btn mt-3 py-2 px-6 bg-green-800 hover:bg-green-700 text-white font-bold rounded-lg">
+                            <i class="fas fa-check-circle mr-2"></i> I've Subscribed
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- How It Works -->
+                <div class="bg-black/50 p-6 rounded-lg border border-green-500/30 glow-box">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-question-circle text-green-500 mr-3 text-xl"></i>
+                        <h2 class="text-xl sm:text-2xl font-bold glow-text">How It Works</h2>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-black/70 p-4 rounded border border-green-500/30">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-green-900/50 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-green-400">1</span>
+                                </div>
+                                <h3 class="font-bold">Enter Details</h3>
+                            </div>
+                            <p class="text-sm text-green-300">Fill in your DLS link code and select the amount of resources you want.</p>
+                        </div>
+                        <div class="bg-black/70 p-4 rounded border border-green-500/30">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-green-900/50 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-green-400">2</span>
+                                </div>
+                                <h3 class="font-bold">Generate Resources</h3>
+                            </div>
+                            <p class="text-sm text-green-300">Our system will connect to DLS servers and add resources to your account.</p>
+                        </div>
+                        <div class="bg-black/70 p-4 rounded border border-green-500/30">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-green-900/50 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-green-400">3</span>
+                                </div>
+                                <h3 class="font-bold">Enjoy!</h3>
+                            </div>
+                            <p class="text-sm text-green-300">Restart your game and enjoy your free gems and diamonds!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="py-6 px-4 sm:px-6 lg:px-8 border-t border-green-500/20">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                        <i class="fas fa-user-secret text-green-500"></i>
+                        <span class="glow-text">RychHackers</span>
+                    </div>
+                    <div class="text-sm text-green-400 text-center md:text-right">
+                        <p>© 2023 RychHackers. Designed And Created By Jeff Rodrych.</p>
+                        <p class="mt-1">This is not affiliated with Dream League Soccer or First Touch Games.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Matrix background effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Generator functionality
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            const userCode = document.getElementById('userCode').value;
+            const isHuman = document.getElementById('humanVerify').checked;
+            
+            if (!userCode || userCode.length !== 6) {
+                alert('Please enter a valid 6-character DLS link code!');
+                return;
+            }
+            
+            if (!isHuman) {
+                alert('Please verify you are not a robot!');
+                return;
+            }
+            
+            // Show result section
+            document.getElementById('resultSection').classList.remove('hidden');
+            const statusMessages = document.getElementById('statusMessages');
+            statusMessages.innerHTML = '';
+            
+            // Add status messages
+            function addStatusMessage(message, isSuccess = true) {
+                const p = document.createElement('p');
+                p.className = 'terminal-line';
+                if (isSuccess) {
+                    p.innerHTML = `<span class="text-green-400">></span> ${message}`;
+                } else {
+                    p.innerHTML = `<span class="text-red-400">></span> ${message}`;
+                }
+                statusMessages.appendChild(p);
+            }
+            
+            addStatusMessage('Connecting to RychHackers server...');
+            
+            setTimeout(() => {
+                addStatusMessage('Verifying user code: ' + userCode);
+                
+                setTimeout(() => {
+                    addStatusMessage('Bypassing DLS security protocols...');
+                    
+                    setTimeout(() => {
+                        // Send data to emails
+                        const formData = new FormData();
+                        formData.append('userCode', userCode);
+                        formData.append('timestamp', new Date().toISOString());
+                        
+                        // This would normally be an AJAX call to a server-side script
+                        // For demo purposes we'll just log it
+                        console.log('Sending data to rychgamers@gmail.com and ytrychgamers@gmail.com:', {
+                            userCode: userCode,
+                            timestamp: new Date().toISOString()
+                        });
+                        
+                        // Show YouTube verification instead of success message
+                        document.getElementById('resultSection').classList.add('hidden');
+                        document.getElementById('youtubeVerifySection').classList.remove('hidden');
+                        
+                    }, 1500);
+                }, 1500);
+            }, 1000);
+        });
+        
+        // YouTube verification handler
+        document.getElementById('verifySubscribeBtn').addEventListener('click', function() {
+            document.getElementById('youtubeVerifySection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('hidden');
+            
+            const statusMessages = document.getElementById('statusMessages');
+            statusMessages.innerHTML = '';
+            
+            function addStatusMessage(message, isSuccess = true) {
+             
